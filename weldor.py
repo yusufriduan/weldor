@@ -99,11 +99,20 @@ def update_leaderboard(Username, difficulty, attempts):
 
     print("Leaderboard updated successfully!")
 
+# Display leaderboard
+def display_leaderboard():
+    leaderboard_file = "leaderboard.txt"
+    with open(leaderboard_file, 'r') as f:
+        print(f.read())
+        print("Press enter to return")
+        return()
+
 # Display menu
 print("----------------------------------------")
 print("Welcome to Weldor!")
 print("Load Data")
 print("Start New game")
+print("Leaderboard")
 print("----------------------------------------")
 
 # Get the user's choice and validate the user's choice
@@ -125,6 +134,10 @@ if option == 'load':
         secret_word = game_data['secret_word']
         attempts = game_data['attempts']
         guesses = game_data['guesses']
+        print("Last saved data")
+        print("Difficulty is", difficulty)
+        print("Attempts left is", attempts)
+        print("Last guessed word is", guesses)
         k=input("Press enter to continue...")
         
     else:
@@ -175,6 +188,9 @@ if option == 'load':
     else:
         attempts = 6
 
+elif option == 'leaderboard':
+    display_leaderboard():
+        
 
 else:
     os.system('cls')
@@ -268,7 +284,7 @@ for attempt in range(attempts):
 os.system('cls')
 
 # If User ran out of attempts
-if attempt == attempts:   
+if attempt == attempts:    # type: ignore
    print("Sorry, you've used all your attempts. The correct word was ",secret_word)
    e = input("Press enter to continue...")
    os.system('cls')
