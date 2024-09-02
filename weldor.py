@@ -117,8 +117,8 @@ print("----------------------------------------")
 
 # Get the user's choice and validate the user's choice
 while True: # True means while user is not choosing either load or new yet
-    option = input("Enter your response (load or new): ").lower()
-    if option in ['new','load']:
+    option = input("Enter your response (load or new or leaderboard): ").lower()
+    if option in ['new','load','leaderboard']:
         break
     else:
         print("Please choose either new game or load your progress.")
@@ -189,7 +189,7 @@ if option == 'load':
         attempts = 6
 
 elif option == 'leaderboard':
-    display_leaderboard():
+    display_leaderboard()
         
 
 else:
