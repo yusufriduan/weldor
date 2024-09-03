@@ -1,11 +1,1 @@
 Username            	Difficulty	Attempts Left
-player1             	easy      	4 
-Suhaini             	easy      	3 
-ahmed               	easy      	3 
-gen z               	hard      	3 
-yus                 	easy      	4 
-yus                 	medium    	3 
-yus                 	easy      	3 
-u                   	easy      	4 
-yus                 	easy      	2 
-yus                 	hard      	4 
