@@ -125,6 +125,7 @@ def main_menu():
             display_leaderboard()
             print("-----------------------------------------------------")
             input("Press enter to continue.")
+            os.system('cls')
             continue
         else:
             print("Please choose either new game or load your progress.")
@@ -296,4 +297,3 @@ if attempt == attempts:    # type: ignore
    # Remove the save game file
    os.remove('saves/{}_checkpoint.json'.format(Username))
    print("Save game file removed.")
-
