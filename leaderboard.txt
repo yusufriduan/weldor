@@ -7,3 +7,5 @@ yus                 	easy      	4
 yus                 	medium    	3 
 yus                 	easy      	3 
 u                   	easy      	4 
+yus                 	easy      	2 
+yus                 	hard      	4 
