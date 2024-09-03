@@ -104,6 +104,7 @@ def display_leaderboard():
     leaderboard_file = "leaderboard.txt"
     with open(leaderboard_file, 'r') as f:
         print(f.read())
+        return None
 
 # Display menu
 print("----------------------------------------")
