@@ -104,23 +104,32 @@ def display_leaderboard():
     leaderboard_file = "leaderboard.txt"
     with open(leaderboard_file, 'r') as f:
         print(f.read())
-        return None
 
 # Display menu
-print("----------------------------------------")
-print("Welcome to Weldor!")
-print("Load Data")
-print("Start New game")
-print("Leaderboard")
-print("----------------------------------------")
+def main_menu():
+    print("----------------------------------------")
+    print("Welcome to Weldor!")
+    print("Load Data")
+    print("Start New game")
+    print("Leaderboard")
+    print("----------------------------------------")
 
-# Get the user's choice and validate the user's choice
-while True: # True means while user is not choosing either load or new yet
-    option = input("Enter your response (load or new or leaderboard): ").lower()
-    if option in ['new','load','leaderboard']:
-        break
-    else:
-        print("Please choose either new game or load your progress.")
+        # Get the user's choice and validate the user's choice
+    while True: # True means while user is not choosing either load or new yet
+        option = input("Enter your response (load or new or leaderboard): ").lower()
+        if option in ['new','load']:
+            return option
+        elif option == 'leaderboard':
+            os.system('cls')
+            print("-----------------------------------------------------")
+            display_leaderboard()
+            print("-----------------------------------------------------")
+            input("Press enter to continue.")
+            continue
+        else:
+            print("Please choose either new game or load your progress.")
+    
+option = main_menu()
 
 if option == 'load':
     os.system('cls')
@@ -186,11 +195,7 @@ if option == 'load':
         attempts = 5
     else:
         attempts = 6
-
-elif option == 'leaderboard':
-    display_leaderboard()
         
-
 else:
     os.system('cls')
 
@@ -291,3 +296,4 @@ if attempt == attempts:    # type: ignore
    # Remove the save game file
    os.remove('saves/{}_checkpoint.json'.format(Username))
    print("Save game file removed.")
+

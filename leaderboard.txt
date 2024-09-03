@@ -6,3 +6,4 @@ gen z               	hard      	3
 yus                 	easy      	4 
 yus                 	medium    	3 
 yus                 	easy      	3 
+u                   	easy      	4 
