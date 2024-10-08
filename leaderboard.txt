@@ -1,1 +1,2 @@
 Username            	Difficulty	Attempts Left
+adelle              	easy      	4 
