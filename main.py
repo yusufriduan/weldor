@@ -104,6 +104,7 @@ def display_leaderboard():
     leaderboard_file = "leaderboard.txt"
     with open(leaderboard_file, 'r') as f:
         print(f.read())
+    return(None)
 
 # Display menu
 def main_menu():
@@ -138,7 +139,8 @@ if option == 'load':
     Username = input("Enter your username: ").strip()
     game_data = load_game(Username)
     if game_data:
-        print("Welcome back", Username, "!")
+        os.system('cls')
+        print("Welcome back", Username, "! \n")
         difficulty = game_data['difficulty']
         secret_word = game_data['secret_word']
         attempts = game_data['attempts']
