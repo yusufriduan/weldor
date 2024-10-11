@@ -158,15 +158,13 @@ if option == 'load':
     else:
         os.system('cls')
 
-        print("No saved game found. Starting a new game.\n")
+        print("No saved game found.\nStarting a new game.\n")
         h=input("Press enter to continue...")
         os.system('cls')
 
         print("----------------------------------------")
-        print("Select Difficulty Level")
-        print("1. Easy")
-        print("2. Medium")
-        print("3. Hard")
+        print("Select Difficulty Level\n")
+        print(" 1. Easy\n 2. Medium\n 3. Hard")
         print("----------------------------------------")
 
         #Keep looping until user choose the difficulty
@@ -214,10 +212,8 @@ else:
     os.system('cls')
 
     print("----------------------------------------")
-    print("Select Difficulty Level")
-    print("1. Easy")
-    print("2. Medium")
-    print("3. Hard")
+    print("Select Difficulty Level\n")
+    print(" 1. Easy\n 2. Medium\n 3. Hard")
     print("----------------------------------------")
 
     #Keep looping until user choose the difficulty
@@ -257,12 +253,12 @@ else:
 os.system('cls')
 
 # The game commence!
-print("You have chosen",difficulty,"difficulty. Your guess must be",len(secret_word),"letters long. You have",attempts,"attempts to guess the word.")
+print("You have chosen",difficulty,"difficulty.\nYour guess must be",len(secret_word),"letters long.\nYou have",attempts,"attempts to guess the word.")
 
 for attempt in range(attempts):
     guess = get_guess()
     if guess == "exit":
-        print("Exiting the game. Goodbye!")
+        print("Exiting the game.\nGoodbye!")
         e=input("Press enter to exit")
         os.system('cls')
         exit()
@@ -272,7 +268,7 @@ for attempt in range(attempts):
         continue
 
     if guess == secret_word:
-        print("Congratulations! You've guessed the word correctly!")
+        print("Congratulations!\nYou've guessed the word correctly!")
         n = input("Enter enter to continue...")
         os.system('cls')
 
@@ -297,7 +293,7 @@ os.system('cls')
 
 # If User ran out of attempts
 if attempt == attempts:    # type: ignore
-   print("Sorry, you've used all your attempts. The correct word was ",secret_word)
+   print("Sorry, you've used all your attempts.\nThe correct word was ",secret_word)
    e = input("Press enter to continue...")
    os.system('cls')
 
