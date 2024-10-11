@@ -1,7 +1,2 @@
-Username            	Difficulty	Attempts Left
-adelle              	easy      	4 
-                    	easy      	4 
-adele               	easy      	2 
-hello               	easy      	4 
-hello               	easy      	3 
-username            	easy      	3 
+Username            	Difficulty	Attempts  
+adele               	easy      	3 
