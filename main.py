@@ -247,11 +247,11 @@ else:
 
     # Different attempts based on difficulty
     if difficulty == 'easy':
-        attempts = 4
+        attempts = 5
     elif difficulty == 'medium':
         attempts = 5
     else:
-        attempts = 6
+        attempts = 4
     
     secret_word = choose_word(difficulty)
 os.system('cls')
