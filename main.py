@@ -109,10 +109,8 @@ def display_leaderboard():
 # Display menu
 def main_menu():
     print("----------------------------------------")
-    print("Welcome to Weldor!")
-    print("Load Data")
-    print("Start New game")
-    print("Leaderboard")
+    print("Welcome to Weldor!\n")
+    print(" 1. Load Data\n 2. Start New Game\n 3. Leaderboard\n 4. Exit")
     print("----------------------------------------")
 
         # Get the user's choice and validate the user's choice
@@ -128,6 +126,12 @@ def main_menu():
             input("Press enter to continue.")
             os.system('cls')
             continue
+        elif option == 'exit':
+            os.system('cls')
+            print("Exiting the game. Goodbye!")
+            e=input("Press enter to exit")
+            os.system('cls')
+            exit()
         else:
             print("Please choose either new game or load your progress.")
     
