@@ -91,7 +91,7 @@ def update_leaderboard(Username, difficulty, attempts):
     # Create the file if it doesn't exist
     if not os.path.exists(leaderboard_file):
         with open(leaderboard_file, "w") as f:
-            f.write("{:<20}\t{:<10}\t{:<10}\n".format("Username", "Difficulty", "Attempts Left"))
+            f.write("{:<20}\t{:<10}\t{:<10}\n".format("Username", "Difficulty", "Attempts"))
 
     # Write the new score to the file
     with open(leaderboard_file, "a") as f:
