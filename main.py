@@ -12,6 +12,7 @@
 import random
 import os
 import json
+import msvcrt
 
 def choose_word(level):
     word_list = {
@@ -20,6 +21,14 @@ def choose_word(level):
         'hard' : ['franchised', 'facetious', 'flabbergasted', 'amendment', 'accumulate']
     }
     return random.choice(word_list[level])
+
+def get_enter():
+        while True:
+            char = msvcrt.getch()
+            if char == b'\r': #Enter key
+                return
+            else:
+                print('', end='\r')  # overwrite the input with a blank space
     
 def get_guess():
     return input("Enter your guess: ").strip().lower()
@@ -123,13 +132,15 @@ def main_menu():
             print("-----------------------------------------------------")
             display_leaderboard()
             print("-----------------------------------------------------")
-            input("Press enter to continue.")
+            print("Press enter to continue.")
+            get_enter()
             os.system('cls')
             continue
         elif option == 'exit':
             os.system('cls')
             print("Exiting the game. Goodbye!")
-            e=input("Press enter to exit")
+            print("Press enter to exit")
+            get_enter()
             os.system('cls')
             exit()
         else:
@@ -152,14 +163,16 @@ if option == 'load':
         print("Last saved data")
         print("Difficulty is", difficulty)
         print("Attempts left is", attempts)
-        print("Last guessed word is", guesses)
-        k=input("Press enter to continue...")
+        print("Last guessed word is", guesses,"\n")
+        print("Press enter to continue...")
+        get_enter()
         
     else:
         os.system('cls')
 
         print("No saved game found.\nStarting a new game.\n")
-        h=input("Press enter to continue...")
+        print("Press enter to continue...")
+        get_enter()
         os.system('cls')
 
         print("----------------------------------------")
@@ -205,7 +218,7 @@ else:
     os.system('cls')
 
     print("Starting a new game.")
-    q=input("Press enter to continue...")
+    get_enter()
     os.system('cls')
 
     Username = input("Enter your username: ").strip()
@@ -259,7 +272,7 @@ for attempt in range(attempts):
     guess = get_guess()
     if guess == "exit":
         print("Exiting the game.\nGoodbye!")
-        e=input("Press enter to exit")
+        e=get_enter()
         os.system('cls')
         exit()
 
@@ -278,7 +291,8 @@ for attempt in range(attempts):
         # Check if file exist and remove the save file (if exist)
         if os.path.exists('saves/{}_checkpoint.json'.format(Username)):
             os.remove('saves/{}_checkpoint.json'.format(Username))
-            e = input("Save game file removed.\nPress enter to continue.")
+            print("Save game file removed.\nPress enter to continue.")
+            e = get_enter()
             os.system('cls')
             main_menu()
         else:
@@ -294,7 +308,7 @@ os.system('cls')
 # If User ran out of attempts
 if attempt == attempts:    # type: ignore
    print("Sorry, you've used all your attempts.\nThe correct word was ",secret_word)
-   e = input("Press enter to continue...")
+   e = get_enter()
    os.system('cls')
 
    # Remove the save game file

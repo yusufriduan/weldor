@@ -1,0 +1,2 @@
+Username            	Difficulty	Attempts  
+adele               	easy      	3 
