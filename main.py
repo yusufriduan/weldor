@@ -282,10 +282,11 @@ for attempt in range(attempts):
         # Check if file exist and remove the save file (if exist)
         if os.path.exists('saves/{}_checkpoint.json'.format(Username)):
             os.remove('saves/{}_checkpoint.json'.format(Username))
-            e = input("Save game file removed.\nPress enter to exit.")
-            break
+            e = input("Save game file removed.\nPress enter to continue.")
+            os.system('cls')
+            main_menu()
         else:
-            break
+            main_menu()
     
     feedback = give_feedback(secret_word, guess)
     print("Feedback:",feedback)
@@ -303,3 +304,4 @@ if attempt == attempts:    # type: ignore
    # Remove the save game file
    os.remove('saves/{}_checkpoint.json'.format(Username))
    print("Save game file removed.")
+   main_menu()
