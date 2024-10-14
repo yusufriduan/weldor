@@ -1,7 +1,7 @@
 # **Weldor Game**
 
 ## **Overview**
-Weldor is a word-guessing game and huge-ly inspired from Wordle; The New York Times game where the user has to guess a secret word by suggesting letters. The game has three difficulty levels: easy, medium, and hard, with varying numbers of attempts to guess the word.
+Weldor is a word-guessing game **and huge-ly inspired from Wordle; The New York Times game** where the user has to guess a secret word by suggesting letters. The game has three difficulty levels: easy, medium, and hard, with varying numbers of attempts to guess the word.
 
 ## **Features**
 - Difficulty Levels: Easy, Medium, and Hard, with increasing difficulty and decreasing number of attempts.
