@@ -1,14 +1,3 @@
-# *********************************************************
-# Program: weldor.py
-# Course: CSP1114 PROBLEM SOLVING AND PROGRAM DESIGN
-# Class: TC1L / TL2L
-# Trimester: 2410
-# Name: MUHAMMAD YUSUF BIN RIDUAN
-# IDs: 241FC240TK
-# Emails: muhammad.yusuf.riduan@student.mmu.edu.my
-# Phones: 010-652 1373
-# *********************************************************
-
 import random
 import os
 import json
