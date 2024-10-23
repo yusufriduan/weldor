@@ -18,15 +18,13 @@ if option == 'load':
         print("Difficulty is", difficulty)
         print("Attempts left is", attempts)
         print("Last guessed word is", guesses,"\n")
-        print("Press enter to continue...")
-        core_logic.get_enter()
+        print("Press enter to continue..."); core_logic.get_enter()
         
     else:
         core_logic.os.system('cls')
 
         print("No saved game found.\nStarting a new game.\n")
-        print("Press enter to continue...")
-        core_logic.get_enter()
+        print("Press enter to continue..."); core_logic.get_enter()
         core_logic.os.system('cls')
 
         difficulty = core_logic.difficulty()
@@ -36,8 +34,7 @@ if option == 'load':
 else:
     core_logic.os.system('cls')
 
-    print("Starting a new game.")
-    core_logic.get_enter()
+    print("Starting a new game."); core_logic.get_enter()
     core_logic.os.system('cls')
 
     Username = input("Enter your username: ").strip()

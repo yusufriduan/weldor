@@ -128,8 +128,7 @@ def main_menu():
         elif option == 'exit':
             os.system('cls')
             print("Exiting the game. Goodbye!")
-            print("Press enter to exit")
-            get_enter()
+            print("Press enter to exit"); get_enter()
             os.system('cls')
             exit()
         else:
@@ -168,7 +167,10 @@ def difficulty():
 def attempts(difficulty):
     if difficulty == 'easy':
         attempts = 4
+        return 4
     elif difficulty == 'medium':
         attempts = 5
+        return 5
     else:
         attempts = 6
+        return 6

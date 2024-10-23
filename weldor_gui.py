@@ -20,7 +20,7 @@ class WeldorGUI:
         self.game_frame.pack(fill="both", expand=True)
 
         # Create title label
-        self.title_label = tk.Label(self.title_frame, text="Weldor", font=("Arial", 24))
+        self.title_label = tk.Label(self.title_frame, text="Weldor", font=("Times New Roman", 24))
         self.title_label.pack(pady=10)
 
         # Create difficulty selection
@@ -71,7 +71,7 @@ class WeldorGUI:
             self.feedback_label.config(text="Congratulations!\nYou've guessed the word correctly!")
             self.guess_button.config(state="disabled")
         else:
-            self.attempts -= 1
+            self.attempts -= 1 # type: ignore
             if self.attempts == 0:
                 self.feedback_label.config(text="Sorry, you've used all your attempts. The correct word was {}".format(self.secret_word))
                 self.guess_button.config(state="disabled")
