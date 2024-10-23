@@ -133,7 +133,7 @@ def main_menu():
         elif option == 'exit':
             os.system('cls')
             print("Exiting the game. Goodbye!")
-            print("Press enter to exit"); get_enter()
+            print("Press enter to exit", get_enter())
             os.system('cls')
             exit()
         
@@ -193,6 +193,7 @@ def difficulty_selection():
 def attempts(difficulty):
     if difficulty == 'easy':
         attempts = 4
+        return
     elif difficulty == 'medium':
         attempts = 5
     else:
@@ -201,7 +202,7 @@ def attempts(difficulty):
 def set_game_perimeters():
     global secret_word, attempts
     secret_word = choose_word(difficulty)
-    attempts = attempts(difficulty)
+    attempts = attempts(difficulty) # type: ignore
 
 def game_starts():
     # The game commence!
