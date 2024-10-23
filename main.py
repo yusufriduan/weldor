@@ -28,9 +28,8 @@ if option == 'load':
         print("Press enter to continue..."); core_logic.get_enter()
         core_logic.os.system('cls')
 
-        difficulty = core_logic.difficulty()
-        secret_word = core_logic.choose_word(difficulty)
-        attempts = core_logic.attempts(difficulty)
+        core_logic.difficulty_selection()
+        core_logic.set_game_perimeters()
         
 else:
     core_logic.os.system('cls')
