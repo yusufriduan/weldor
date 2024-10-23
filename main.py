@@ -1,4 +1,5 @@
 import core_logic
+from core_logic import choose_word
 
 option = core_logic.main_menu()
 
@@ -40,13 +41,11 @@ else:
     Username = input("Enter your username: ").strip()
     core_logic.os.system('cls')
 
-    difficulty = core_logic.difficulty()
-    secret_word = core_logic.choose_word(difficulty)
-    attempts = core_logic.attempts(difficulty)
+    core_logic.difficulty_selection()
+    core_logic.set_game_perimeters()
 core_logic.os.system('cls')
 
-# The game commence!
-print("You have chosen",difficulty,"difficulty.\nYour guess must be",len(secret_word),"letters long.\nYou have",attempts,"attempts to guess the word.")
+core_logic.game_starts()
 
 for attempt in range(attempts):
     guess = core_logic.get_guess()

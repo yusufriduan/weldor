@@ -159,7 +159,8 @@ def main_menu():
         else:
             print("Please choose either new game or load your progress.")
 
-def difficulty():
+def difficulty_selection():
+    global difficulty
     print("----------------------------------------")
     print("Select Difficulty Level\n")
     print(" 1. Easy\n 2. Medium\n 3. Hard")
@@ -192,10 +193,16 @@ def difficulty():
 def attempts(difficulty):
     if difficulty == 'easy':
         attempts = 4
-        return 4
     elif difficulty == 'medium':
         attempts = 5
-        return 5
     else:
         attempts = 6
-        return 6
+    
+def set_game_perimeters():
+    global secret_word, attempts
+    secret_word = choose_word(difficulty)
+    attempts = attempts(difficulty)
+
+def game_starts():
+    # The game commence!
+    print("You have chosen",difficulty,"difficulty.\nYour guess must be",len(secret_word),"letters long.\nYou have",attempts,"attempts to guess the word.")
