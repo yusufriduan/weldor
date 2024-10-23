@@ -40,7 +40,7 @@ else:
     Username = input("Enter your username: ").strip()
     core_logic.os.system('cls')
 
-    difficulty = core_logic.difficulty
+    difficulty = core_logic.difficulty()
     secret_word = core_logic.choose_word(difficulty)
     attempts = core_logic.attempts(difficulty)
 core_logic.os.system('cls')

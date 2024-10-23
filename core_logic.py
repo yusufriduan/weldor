@@ -3,13 +3,18 @@ import os
 import json
 import msvcrt
 
-def choose_word(level):
+def choose_word(difficulty):
     word_list = {
-        'easy' : ['chair', 'start', 'world', 'peach', 'wears'],
-        'medium' : ['compare', 'reptile', 'bargain', 'traders', 'dynasty'],
-        'hard' : ['franchised', 'facetious', 'flabbergasted', 'amendment', 'accumulate']
+        'easy': ['chair', 'start', 'world', 'peach', 'wears'],
+        'medium': ['compare', 'reptile', 'bargain', 'traders', 'dynasty'],
+        'hard': ['franchised', 'facetious', 'flabbergasted', 'amendment', 'accumulate']
     }
-    return random.choice(word_list[level])
+
+    # Check if the difficulty is valid
+    if difficulty in word_list:
+        return random.choice(word_list[difficulty])
+    else:
+        raise ValueError("Invalid difficulty level. Choose from 'easy', 'medium', or 'hard'.")
 
 def get_enter():
         while True:
@@ -108,12 +113,12 @@ def display_leaderboard():
 def main_menu():
     print("----------------------------------------")
     print("Welcome to Weldor!\n")
-    print(" 1. Load Data\n 2. Start New Game\n 3. Leaderboard\n 4. Exit")
+    print(" 1. Start New Game\n 2. Load Game\n 3. Leaderboard\n 4. Exit")
     print("----------------------------------------")
 
         # Get the user's choice and validate the user's choice
     while True: # True means while user is not choosing either load or new yet
-        option = input("Enter your response (load or new or leaderboard): ").lower()
+        option = input("Enter your response (load, new or leaderboard): ").lower()
         if option in ['new','load']:
             return option
         elif option == 'leaderboard':
@@ -131,6 +136,26 @@ def main_menu():
             print("Press enter to exit"); get_enter()
             os.system('cls')
             exit()
+        
+        elif option.isdigit():
+            optionint =  int(option)
+            if optionint == 1:
+                option = "new"
+                break
+            if optionint == 2:
+                option = "load"
+                break
+            if  optionint == 3:
+                option = "leaderboard"
+                break
+            if optionint == 4:
+                option = "exit"
+                break
+            else:
+                print("Invalid choice. Please choose a valid number.")
+
+
+
         else:
             print("Please choose either new game or load your progress.")
 
