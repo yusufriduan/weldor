@@ -113,7 +113,7 @@ def main_menu():
 
         # Get the user's choice and validate the user's choice
     while True: # True means while user is not choosing either load or new yet
-        option = input("Enter your response (load or new or leaderboard): ").lower()
+        option = input("Enter your response: ").lower()
         if option in ['new','load']:
             return option
         elif option == 'leaderboard':
@@ -124,7 +124,7 @@ def main_menu():
             print("Press enter to continue.")
             get_enter()
             os.system('cls')
-            continue
+            return main_menu()
         elif option == 'exit':
             os.system('cls')
             print("Exiting the game. Goodbye!")
@@ -134,34 +134,86 @@ def main_menu():
             exit()
         else:
             print("Please choose either new game or load your progress.")
-    
-option = main_menu()
 
-if option == 'load':
+def get_attempts(difficulty):
+    if difficulty == 'easy':
+        return 4
+    elif difficulty == 'medium':
+        return 5
+    else:
+        return 6
+
+def get_difficulty_level():
+    while True:
+        difficulty = input("Enter your difficulty: ").lower()
+        if difficulty in ['easy','medium','hard']:
+            return difficulty
+
+        # Auto-detect difficulty level if user enters a number
+        elif difficulty.isdigit():
+            difficulty_level = int(difficulty)
+            if difficulty_level == 1:
+                return 'easy'
+            elif difficulty_level == 2:
+                return 'medium'
+            elif difficulty_level == 3:
+                return 'hard'
+            elif difficulty_level not in [1, 2, 3]:
+                print("Sorry what number are you typing again?")
+
+        else:
+            print("Sorry I understand you're having difficulty to type properly.\nPlease type your difficulty. (easy, medium or hard): ")
+
+def game():
     os.system('cls')
-    
-    Username = input("Enter your username: ").strip()
-    game_data = load_game(Username)
-    if game_data:
+    option = main_menu()
+
+    if option == 'load':
         os.system('cls')
-        print("Welcome back", Username, "! \n")
-        difficulty = game_data['difficulty']
-        secret_word = game_data['secret_word']
-        attempts = game_data['attempts']
-        guesses = game_data['guesses']
-        print("Last saved data")
-        print("Difficulty is", difficulty)
-        print("Attempts left is", attempts)
-        print("Last guessed word is", guesses,"\n")
-        print("Press enter to continue...")
-        get_enter()
+
+        Username = input("Enter your username: ").strip()
+        game_data = load_game(Username)
+        if game_data:
+            os.system('cls')
+            print("Welcome back", Username, "! \n")
+            difficulty = game_data['difficulty']
+            secret_word = game_data['secret_word']
+            attempts = game_data['attempts']
+            guesses = game_data['guesses']
+            print("Last saved data")
+            print("Difficulty is", difficulty)
+            print("Attempts left is", attempts)
+            print("Last guessed word is", guesses,"\n")
+            print("Press enter to continue...")
+            get_enter()
+            
+        else:
+            os.system('cls')
+
+            print("No saved game found.\nStarting a new game.\n")
+            print("Press enter to continue...")
+            get_enter()
+            os.system('cls')
+
+            print("----------------------------------------")
+            print("Select Difficulty Level\n")
+            print(" 1. Easy\n 2. Medium\n 3. Hard")
+            print("----------------------------------------")
+
+            difficulty = get_difficulty_level()
         
+            secret_word = choose_word(difficulty)
+        
+        attempts = get_attempts(difficulty)
+            
     else:
         os.system('cls')
 
-        print("No saved game found.\nStarting a new game.\n")
-        print("Press enter to continue...")
+        print("Starting a new game.")
         get_enter()
+        os.system('cls')
+
+        Username = input("Enter your username: ").strip()
         os.system('cls')
 
         print("----------------------------------------")
@@ -169,138 +221,41 @@ if option == 'load':
         print(" 1. Easy\n 2. Medium\n 3. Hard")
         print("----------------------------------------")
 
-        #Keep looping until user choose the difficulty
-        while True: # True means while user is not choosing any difficulty yet
-            difficulty = input("Enter your difficulty: ").lower()
-            if difficulty in ['easy','medium','hard']:
-                break
-
-            # Auto-detect difficulty level if user enters a number
-            elif difficulty.isdigit():
-                difficulty_level = int(difficulty)
-                if difficulty_level == 1:
-                    difficulty = 'easy'
-                    break
-                elif difficulty_level == 2:
-                    difficulty = 'medium'
-                    break
-                elif difficulty_level == 3:
-                    difficulty = 'hard'
-                    break
-                elif difficulty_level not in [1, 2, 3]:
-                    print("Sorry what number are you typing again?")
-
-            else:
-                print("Sorry I understand you're having difficulty to type properly.\nPlease type your difficulty. (easy, medium or hard): ")
-    
-        secret_word = choose_word(difficulty)
-    
-    # Different attempts based on difficulty
-    if difficulty == 'easy':
-        attempts = 4
-    elif difficulty == 'medium':
-        attempts = 5
-    else:
-        attempts = 6
+        difficulty = get_difficulty_level()
         
-else:
+        attempts = get_attempts(difficulty)
+        
+        secret_word = choose_word(difficulty)
+
     os.system('cls')
 
-    print("Starting a new game.")
-    get_enter()
-    os.system('cls')
+    # The game commence!
+    print("You have chosen",difficulty,"difficulty.\nYour guess must be",len(secret_word),"letters long.\nYou have",attempts,"attempts to guess the word.")
 
-    Username = input("Enter your username: ").strip()
-    os.system('cls')
+    for attempt in range(attempts):
+        guess = get_guess()
+        if guess == "exit":
+            #Autosaves the progress
+            save_game(Username, difficulty, secret_word, attempts - attempt -1, guess)
 
-    print("----------------------------------------")
-    print("Select Difficulty Level\n")
-    print(" 1. Easy\n 2. Medium\n 3. Hard")
-    print("----------------------------------------")
-
-    #Keep looping until user choose the difficulty
-    while True:
-        difficulty = input("Enter your difficulty: ").lower()
-        if difficulty in ['easy','medium','hard']:
-            break
-            
-        # Auto-detect difficulty level if user enters a number
-        elif difficulty.isdigit():
-            difficulty_level = int(difficulty)
-            if difficulty_level == 1:
-                difficulty = 'easy'
-                break
-            elif difficulty_level == 2:
-                difficulty = 'medium'
-                break
-            elif difficulty_level == 3:
-                difficulty = 'hard'
-                break
-                break
-            elif difficulty_level not in [1, 2, 3]:
-                print("Sorry what number are you typing again?")
-
-        else:
-            print("Sorry I understand you're having difficulty to type properly.\nPlease type your difficulty. (easy, medium or hard): ")
-
-    # Different attempts based on difficulty
-    if difficulty == 'easy':
-        attempts = 5
-    elif difficulty == 'medium':
-        attempts = 5
-    else:
-        attempts = 4
-    
-    secret_word = choose_word(difficulty)
-os.system('cls')
-
-# The game commence!
-print("You have chosen",difficulty,"difficulty.\nYour guess must be",len(secret_word),"letters long.\nYou have",attempts,"attempts to guess the word.")
-
-for attempt in range(attempts):
-    guess = get_guess()
-    if guess == "exit":
-        print("Exiting the game.\nGoodbye!")
-        e=get_enter()
-        os.system('cls')
-        exit()
-
-    if len(guess) != len(secret_word):
-        print("Your guess must be",len(secret_word),"letters long.")
-        continue
-
-    if guess == secret_word:
-        print("Congratulations!\nYou've guessed the word correctly!")
-        n = input("Enter enter to continue...")
-        os.system('cls')
-
-        #Update the leaderboard
-        update_leaderboard(Username, difficulty, attempts - attempt) # Using attempts - attempt to get more accurate number of tries
-
-        # Check if file exist and remove the save file (if exist)
-        if os.path.exists('saves/{}_checkpoint.json'.format(Username)):
-            os.remove('saves/{}_checkpoint.json'.format(Username))
-            print("Save game file removed.\nPress enter to continue.")
-            e = get_enter()
+            print("Progress saved.\nExiting the game.\nGoodbye!")
+            e=get_enter()
             os.system('cls')
+            exit()
+
+        if len(guess) != len(secret_word):
+            print("Your guess must be",len(secret_word),"letters long.")
+            continue
+
+        if guess == secret_word:
+            print("Congratulations!\nYou've guessed the word correctly!")
+            n = input("Enter enter to continue...")
+            os.system('cls')
+
+            #Update the leaderboard
+            update_leaderboard(Username, difficulty, attempts - attempt) # Using attempts - attempt to
             main_menu()
-        else:
-            main_menu()
-    
-    feedback = give_feedback(secret_word, guess)
-    print("Feedback:",feedback)
+        feedback = give_feedback(secret_word, guess)
+        print("Feedback:",feedback)
 
-    # Autosaves the guesses
-    save_game(Username, difficulty, secret_word, attempts - attempt -1, guess)
-os.system('cls')
-
-# If User ran out of attempts
-if attempt == attempts:    # type: ignore
-   print("Sorry, you've used all your attempts.\nThe correct word was ",secret_word)
-   e = get_enter()
-   os.system('cls')
-
-   # Remove the save game file
-   os.remove('saves/{}_checkpoint.json'.format(Username))
-   print("Save game file removed.")
-   main_menu()
+game()
