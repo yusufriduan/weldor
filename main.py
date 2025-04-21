@@ -132,8 +132,31 @@ def main_menu():
             get_enter()
             os.system('cls')
             exit()
+        elif option.isdigit():
+            if option == '1':
+                return 'load'
+            elif option == '2':
+                return 'new'
+            elif option == '3':
+                os.system('cls')
+                print("-----------------------------------------------------")
+                display_leaderboard()
+                print("-----------------------------------------------------")
+                print("Press enter to continue.")
+                get_enter()
+                os.system('cls')
+                return main_menu()
+            elif option == '4':
+                os.system('cls')
+                print("Exiting the game. Goodbye!")
+                print("Press enter to exit")
+                get_enter()
+                os.system('cls')
+                exit()
+            else:
+                print("wrong input. Please try again.")
         else:
-            print("Please choose either new game or load your progress.")
+            print("Wrong input. Please try again.")
 
 def get_attempts(difficulty):
     if difficulty == 'easy':

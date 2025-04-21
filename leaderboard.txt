@@ -3,3 +3,5 @@ adele               	easy      	3
 ari                 	medium    	4 
 delv                	hard      	3 
 delvinn             	easy      	4 
++24                 	hard      	6 
+delvinn             	easy      	4 
